@@ -1,0 +1,29 @@
+#This query gets the details of selected anime from search screen
+#Here preventing multiple round trip is showcased
+#From one graph query, we are querying paginated Review, Media, MediaTrend, Review and Studio
+#If we had to use REST then we would have to chain the following requests
+#media/<id>
+#mediatrend/<mediaid>
+#studio/<mediaid>
+#Only once we make these three api calls, we could render the details on our screen
+
+query AnimeDetails($id: Int!, $page:Int, $perPage:Int, $isFromSearch: Boolean!) {
+    Page(page: $page, perPage: $perPage) {
+        pageInfo {
+            total
+            currentPage
+            lastPage
+            hasNextPage
+            perPage
+        }
+        reviews(mediaId:$id) {
+            summary
+        }
+    }
+    Media(id: $id) {
+        ...mediaFragment
+    }
+    MediaTrend(mediaId: $id) {
+        trending
+    }
+}

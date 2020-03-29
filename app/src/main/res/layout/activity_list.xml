@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vfListPage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".list.ListActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/colorPrimary"
+            android:indeterminate="true"
+            android:visibility="visible" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAnimeList"
+            android:clipToPadding="false"
+            android:paddingTop="12dp"
+            android:layout_above="@id/pbAnimeListLoadMore"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <ProgressBar
+            android:id="@+id/pbAnimeListLoadMore"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/colorPrimary"
+            android:indeterminate="true"
+            android:visibility="visible" />
+    </RelativeLayout>
+</ViewFlipper>

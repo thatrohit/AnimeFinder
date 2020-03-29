@@ -1,0 +1,29 @@
+#This graphql shows a search script with filters using fragments
+#Search filters are applied on genre, status, FuzzyDateInt or MediaStatus
+#FuzzyDateInt 8 digit long date integer (YYYYMMDD). Unknown dates represented by 0. E.g. 2016: 20160000, May 1976: 19760500
+#MediaStatus enum FINISHED, CANCELLED, RELEASING and NOT_YET_RELEASED
+#This also showcases @skip directive in mediaFragment
+
+query AdvancedSearch($page: Int!, $perPage: Int!
+
+    , $search: String
+    , $id: Int
+    , $genre: String
+    , $status: MediaStatus
+    , $startDate: FuzzyDateInt
+    , $minimumEpisodes: Int
+    , $isFromSearch: Boolean!
+) {
+    Page(page: $page, perPage: $perPage) {
+        pageInfo {
+            total
+            currentPage
+            lastPage
+            hasNextPage
+            perPage
+        }
+        media(id: $id, search: $search, genre: $genre, status: $status, isAdult: false, episodes_greater: $minimumEpisodes, startDate:$startDate) {
+            ...mediaFragment
+        }
+    }
+}

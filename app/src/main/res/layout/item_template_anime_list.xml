@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:paddingBottom="12dp"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:elevation="4dp"
+        android:background="@drawable/bg_rounded_corner_gradient_fill"
+        android:foreground="?attr/selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivCoverPhoto"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="8dp" />
+
+        <TextView
+            android:id="@+id/tvItAnimeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/separator"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_toEndOf="@+id/ivCoverPhoto"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-condensed"
+            android:maxLines="1"
+            android:textColor="@color/titleText"
+            android:textSize="28sp" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

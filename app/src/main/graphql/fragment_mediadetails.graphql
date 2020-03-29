@@ -1,0 +1,20 @@
+#Reusable fragment to get details of media
+#Showcases how we can use directive to prevent over-fetching/under-fetching
+
+fragment mediaFragment on Media {
+    id
+    genres @skip(if: $isFromSearch)
+    coverImage {
+        large
+    }
+    bannerImage
+    description @skip(if: $isFromSearch)
+    duration @skip(if: $isFromSearch)
+    status @skip(if: $isFromSearch)
+    startDate @skip(if: $isFromSearch) {
+        year
+    }
+    title {
+        romaji
+    }
+}

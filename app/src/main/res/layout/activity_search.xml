@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <ScrollView
+        android:id="@+id/svAdvancedSearch"
+        android:layout_above="@+id/btnSearch"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp"
+            tools:context=".search.SearchActivity">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="All fields are optional" />
+
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Enter Anime Name e.g. One Punch Man"
+                android:inputType="text" />
+
+            <Spinner
+                android:id="@+id/spinnerGenre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_rounded_corner_gradient_fill"
+                android:paddingTop="6dp"
+                android:paddingBottom="12dp" />
+
+            <Spinner
+                android:id="@+id/spinnerMediaStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_rounded_corner_gradient_fill"
+                android:paddingTop="6dp"
+                android:paddingBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/etYear"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:hint="Start year"
+                    android:maxLength="4" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Spinner
+                    android:id="@+id/spinnerMonth"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:background="@drawable/bg_rounded_corner_gradient_fill"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="12dp" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/etMinimuEpisodes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Minimum Episodes e.g. 15"
+                android:inputType="number" />
+
+
+        </LinearLayout>
+    </ScrollView>
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_alignParentBottom="true"
+        android:background="@color/separator_gradient"
+        android:layout_width="match_parent"
+        android:textColor="@android:color/white"
+        android:layout_height="60dp"
+        android:textAllCaps="true"
+        android:letterSpacing="0.5"
+        android:padding="0dp"
+        android:layout_marginTop="20dp"
+        android:inputType="number"
+        android:text="SEARCH" />
+</RelativeLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:shape="rectangle"
+    android:layout_width="match_parent">
+    <gradient
+        android:endColor="@color/separator"
+        android:angle="180"
+        android:startColor="@color/separator_gradient"/>
+
+    <corners android:radius="4dp"/>
+
+</shape>
