@@ -11,7 +11,8 @@ import java.util.concurrent.TimeUnit
 object ApolloController {
     private fun createHttpClient(): OkHttpClient {
         val client = OkHttpClient.Builder()
-        client.readTimeout(5 * 60, TimeUnit.SECONDS)
+        val timeout: Int = 5 * 60
+        client.readTimeout(timeout.toLong(), TimeUnit.SECONDS)
         return client.addInterceptor {
             val original = it.request()
             val requestBuilder = original.newBuilder()

@@ -1,6 +1,7 @@
 package com.example.animefinder.details
 
 import AnimeDetailsQuery
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
@@ -24,6 +25,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_detail.*
+import java.util.*
 
 class DetailActivity : AppCompatActivity() {
 
@@ -71,7 +73,9 @@ class DetailActivity : AppCompatActivity() {
         Glide.with(this).load(frag?.coverImage?.large).into(ivAnimePhoto)
         Glide.with(this).load(frag?.bannerImage).into(ivAnimeCover)
         tvAnimeTitle.setText(frag?.title?.romaji)
-        tvAnimeDescription.setText(Html.fromHtml(frag?.description, 0))
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            tvAnimeDescription.text = Html.fromHtml(frag?.description, 0)
+        }
         val reviews = StringBuilder()
         data?.page?.reviews?.forEach {
             reviews.append("✔️ ${it?.summary}").append("\n\n")
@@ -84,11 +88,11 @@ class DetailActivity : AppCompatActivity() {
                 LinearLayout.LayoutParams.WRAP_CONTENT
             )
             layoutManager.setMargins(0, 20, 20, 0)
-            tag?.setText("#${it?.toLowerCase()}")
+            tag?.setText("#${it?.lowercase(Locale.getDefault())}")
             tag?.layoutParams = layoutManager
             fbTags.addView(tag)
         }
-        tvAnimeReviews.setText(if (reviews.isNullOrEmpty()) "No reviews yet 😞" else reviews.toString())
+        tvAnimeReviews.setText(if (reviews.isEmpty()) "No reviews yet 😞" else reviews.toString())
         tvAnimeTrendingScore.setText("Trending Score: ${data?.mediaTrend?.trending ?: 0}")
     }
 
