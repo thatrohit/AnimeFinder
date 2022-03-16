@@ -1,4 +1,4 @@
-name: Trigger Build On Merge
+name: Trigger Build Manually
 on:
   workflow_dispatch:
 
