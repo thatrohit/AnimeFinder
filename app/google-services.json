@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "951624620769",
+    "project_id": "animefinder-4327e",
+    "storage_bucket": "animefinder-4327e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:951624620769:android:d2c289ca039cf56176b5a0",
+        "android_client_info": {
+          "package_name": "com.example.animefinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "951624620769-3adum64i9v9qo4gra3vouiad6pp3et2r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRB0didpR4113KZRKOy_8WQkvUH7aqqEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "951624620769-3adum64i9v9qo4gra3vouiad6pp3et2r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
