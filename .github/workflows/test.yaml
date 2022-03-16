@@ -1,38 +1,19 @@
-name: Trigger Build On Merge
+name: Test variables
 on:
   pull_request:
-    types:
-      - closed
+    types: [opened, closed]
 jobs:
-    build:
-      if: github.event.pull_request.merged
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v2
-
-        - name: Setup Java JDK
-          uses: actions/setup-java@v1
-          with:
-            java-version: 11
-
-        - name: Change gradlew executable permission
-          run: chmod +x ./gradlew
-
-        - name: Build Gradle
-          run: ./gradlew assembleRelease
-
-        - name: Upload a Build Artifact
-          uses: actions/upload-artifact@v2
-          with:
-            name: app
-            path: 'app/build/outputs/apk/debug/*.apk'
-
-        - name: Upload Artifact To Firebase App Distribution
-          uses: wzieba/Firebase-Distribution-Github-Action@v1.3.2
-          with:
-            appId: ${{ secrets.FIREBASE_ID }}
-            token: ${{ secrets.FIREBASE_TOKEN }}
-            groups: Android-CICD-Testers
-            releaseNotes: "Hey App Monks! Try to login with your google account then download and test this build."
-            file: 'app/build/outputs/apk/debug/*.apk'
+  build:
+    name: Input check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking your input
+        run: |
+          echo "{{ github.event.action }}"
+          echo "github.event.pull_request.merged           : $MERGED_RAW"
+          echo "github.event.pull_request.merged == 'true' : $MERGED_TRUE_STR"
+          echo "github.event.pull_request.merged  == true  : $MERGED_TRUE_BOOL"
+        env:
+          MERGED_RAW: ${{ github.event.pull_request.merged }}
+          MERGED_TRUE_STR: ${{ github.event.pull_request.merged == 'true' }}
+          MERGED_TRUE_BOOL: ${{ github.event.pull_request.merged == true }}
