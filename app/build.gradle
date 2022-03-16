@@ -26,6 +26,15 @@ android {
     buildTypes {
         debug {
             buildConfigField "String", "BASE_URL", "\"https://graphql.anilist.co\""
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def formattedDate = new Date().format('yyyy-MM-dd-HH-mm-ss')
+                    def newName = output.outputFile.name
+                    newName = newName.replace("app-", "${rootProject.name}-")
+                    newName = newName.replace("-debug", "-$formattedDate")
+                    output.outputFileName  = newName
+                }
+            }
         }
         release {
             buildConfigField "String", "BASE_URL", "\"https://graphql.anilist.co\""

@@ -1,5 +1,7 @@
 name: Trigger Build
-on: [push]
+on:
+  pull_request_target:
+    branches: [ master ]
 jobs:
   Generate-APK:
     runs-on: ubuntu-latest
@@ -22,7 +24,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: app
-          path: app/build/outputs/apk/release/app-release-unsigned.apk
+          path: "app/build/outputs/apk/debug/*.apk"
 
       - name: Upload Artifact To Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.3.2
@@ -30,5 +32,5 @@ jobs:
           appId: ${{ secrets.FIREBASE_ID }}
           token: ${{ secrets.FIREBASE_TOKEN }}
           groups: Android-CICD-Testers
-          releaseNotes: "Hey! This my first integrate Firebase distributions with Github Actions"
-          file: app/build/outputs/apk/release/app-release-unsigned.apk
+          releaseNotes: "Hey App Monks! Try to login with your google account then download and test this build."
+          file: "app/build/outputs/apk/debug/*.apk"
