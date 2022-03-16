@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Checking your input
         run: |
-          echo "{{ github.event.action }}"
+          echo "${{ github.event.action }}"
           echo "github.event.pull_request.merged           : $MERGED_RAW"
           echo "github.event.pull_request.merged == 'true' : $MERGED_TRUE_STR"
           echo "github.event.pull_request.merged  == true  : $MERGED_TRUE_BOOL"
