@@ -28,7 +28,7 @@ class SearchActivity : AppCompatActivity() {
     companion object {
         const val KEY_SEARCH = "Search"
     }
-    val statusMap = hashMapOf(
+    val statusMap : Map<String, MediaStatus?> = hashMapOf(
         "Finished" to MediaStatus.FINISHED,
         "Currently Running" to MediaStatus.RELEASING,
         "Coming Soon" to MediaStatus.NOT_YET_RELEASED,
@@ -88,7 +88,7 @@ class SearchActivity : AppCompatActivity() {
         btnSearch.setOnClickListener {
             val year = if(etYear.text.isNullOrEmpty()) null else etYear.text.toString()
             val month = if (year.isNullOrEmpty()) "00" else String.format("%02d", spinnerMonth.selectedItemPosition)
-            val status = statusMap.getOrDefault(spinnerMediaStatus.selectedItem as? String, null)
+            val status = statusMap.getOrDefault((spinnerMediaStatus.selectedItem as? String) ?: "", null)
             val searchModel = SearchModel(
                 page = 1,
                 perPage = 20,
