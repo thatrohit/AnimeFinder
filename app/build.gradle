@@ -48,7 +48,7 @@ android {
     }
 }
 apollo {
-    generateKotlinModels.set(true) // or false for Java models
+    generateKotlinModels.set(true)
 }
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
