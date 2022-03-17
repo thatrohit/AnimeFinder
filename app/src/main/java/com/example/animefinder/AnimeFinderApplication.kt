@@ -2,6 +2,7 @@ package com.example.animefinder
 
 import android.app.Application
 import android.content.Context
+import com.example.animefinder.utils.CrashReporting
 
 class AnimeFinderApplication: Application() {
     companion object {
@@ -14,7 +15,7 @@ class AnimeFinderApplication: Application() {
     override fun onCreate() {
         super.onCreate()
         appContext = applicationContext
+        Thread.setDefaultUncaughtExceptionHandler(CrashReporting())
     }
-
 
 }
