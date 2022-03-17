@@ -20,7 +20,7 @@ jobs:
           run: chmod +x ./gradlew
 
         - name: Build Gradle
-          run: ./gradlew assembleRelease
+          run: ./gradlew clean assembleDebug
 
         - name: Upload a Build Artifact
           uses: actions/upload-artifact@v2
